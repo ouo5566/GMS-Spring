@@ -13,7 +13,6 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void add(MemberDTO p) {
-		// TODO Auto-generated method stub
 		
 	}
 
