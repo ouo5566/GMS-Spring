@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Component 
 @Data
-public class Member {
+public class MemberDTO {
 	private String memberId, teamId, name, ssn, roll, password, age, gender, subject;
 }
 

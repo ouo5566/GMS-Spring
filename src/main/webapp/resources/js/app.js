@@ -239,7 +239,7 @@
 	var common = (()=>{
 		return{
 			main : x=>{
-				alert('Context Path : ' + x);
+				alert('Context Path : ' + x+"\n한글깨짐?");
 				box.login(x);
 				box.menu(x);
 			}
