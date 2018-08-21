@@ -11,10 +11,16 @@
 	<link rel="shortcut icon" href="${context}/resources/img/favicon.ico">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css">
+	<link rel="stylesheet" href="${context}/resources/css/theme.css">
+	<link rel="stylesheet" href="${context}/resources/css/font-awesome.min.css">
 	<link rel="stylesheet" href="${context}/resources/css/style.css">
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="${context}/resources/js/custom.js"></script>
+	<script src="${context}/resources/js/jquery.easing.min.js"></script>
 	<script src="${context}/resources/js/app.js"></script>
 </head>
 <body>
@@ -24,7 +30,8 @@
       <header id="header">
         <div class="container">
           <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times; </a>
+            <a id="login_btn" href="#login">Login</a>
             <a href="#about">About</a>
             <a href="#event">Event</a>
             <a href="#menu-list">Menu</a>
@@ -52,7 +59,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center marb-35">
-          <h1 class="header-h">Delicious Journey</h1>
+          <h1 class="header-h">Kim Tae Hyung</h1>
           <p class="header-p">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
             <br>nibh euismod tincidunt ut laoreet dolore magna aliquam. </p>
         </div>
@@ -379,6 +386,14 @@
   <!-- / footer -->
 <script>
 	common.main('${context}');
+	
+/* 	document.getElementById('login_btn').addEventListener('click',function(){
+		alert('LOGIN BUTTON');
+	}); */
+	$('#login_btn').on('click', function(){
+		alert('LOGIN BUTTON : JQUERY');
+	});
+	
 </script>
 </body>
 </html>
