@@ -36,7 +36,7 @@
 	</div>
 </div>
 <script>
-	common.main('${context}');
+app.init('${context}');
 </script>
 </body>
 </html>
