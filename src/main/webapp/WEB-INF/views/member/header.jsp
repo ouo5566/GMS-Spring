@@ -6,8 +6,7 @@
         <div class="container">
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times; </a>
-            <a id="login_btn">Login</a>
-            <a id="add_btn">Join</a>
+            <a id="logout_btn">Logout</a>
           </div>
           <!-- Use any element to open the sidenav -->
           <span onclick="openNav()" class="pull-right menu-icon">☰</span>

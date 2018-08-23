@@ -5,6 +5,6 @@
 		<input type="hidden" name="action" value="login"/>
 		ID &nbsp;<input type="text" name="userid"/> <br>
 		PW <input type="text" name="password"/>
-		<input class="form-butt" id="login-form-btn" type="button" value="LOGIN"/>
+		<input id="login_form_btn" type="button" value="LOGIN"/>
 	</form>
 </div>

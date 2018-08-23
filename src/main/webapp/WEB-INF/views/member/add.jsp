@@ -29,7 +29,7 @@
 		<input type="checkbox" name="subject" value="linux"/>Linux
 		<input type="checkbox" name="subject" value="html"/>HTML
 		<input type="checkbox" name="subject" value="spring"/>Spring<br>
-		<input class="form-butt" id="join-form-btn" type="button" value="JOIN" />
+		<input id="add_form_btn" type="button" value="JOIN" />
 	</form>
 </div>
 
