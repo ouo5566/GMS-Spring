@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="content-box">
-	<c:choose>
-			<c:when test="${word ne user.memberId}">
-			<h2>◆My Page◆</h2>
-			</c:when>
-	</c:choose>
 		<table id="mypage-table">
 			<tr>
 				<td id="mypage-img" rowspan="3" colspan="2">
@@ -36,12 +30,6 @@
 			</tr>
 		</table>
 		<br>
-		<c:choose>
-			<c:when test="${word ne user.memberId}">
-				<a class="retrieve-butt" id="logout"><button>LOGOUT</button></a>
-				<a class="retrieve-butt" id="update"><button>UPDATE</button></a>
-				<a class="retrieve-butt" id="delete"><button>DELETE</button></a>
-			</c:when>
-		</c:choose>
+		<a class="retrieve-butt" id="delete"><button>DELETE</button></a>
 </div>
 

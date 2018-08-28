@@ -16,14 +16,46 @@ app = {
 				location.href = app.x()+"/move/auth/member/add";
 			});
 			$('#login_form_btn').click(()=>{
-				location.href = app.x()+"/member/login";
+				$('#login-form')
+					.attr({ action : app.x()+"/member/login",
+							method : "POST"})
+					.submit();
 			});
 			$('#add_form_btn').click(()=>{
-				location.href = app.x()+"/move/auth/member/login";
+				/*
+				var form = document.getElementById('join-form');
+				form.action = app.x() + "/member/add";
+				form.method = "post";	
+				form.submit();
+				*/
+				$('#join-form')
+					.attr({	action : app.x() + "/member/add",
+							method : "POST"	})
+					.submit(); // 메소드체이닝
 			});
 			$('#logout_btn').click(()=>{
 				location.href = app.x()+"/member/logout";
 			});
+			$('#update_move').click(()=>{
+				location.href = app.x()+"/move/login/member/modify";
+			});
+			$('#update_btn').click(()=>{
+				let form = document.getElementById('update-form');
+				alert(form.password.value);
+				if(form.password.value === ""){
+					form.password.value = form.password.placeholder;
+				}
+				$('#update-form')
+					.attr({ action : app.x() + "/member/modify",
+							method : "POST"})
+					.submit();
+			});
+			
+			$("#update-form table tr:eq(0) td:eq(2)").text(app.session.getItem('memberId'));
+			$("#update-form table tr:eq(1) td:eq(1)").text(app.session.getItem('name'));
+			$("#update-form table tr:eq(4) td:eq(1)").text(app.session.getItem('age'));
+			$("#update-form table tr:eq(3) td:eq(1)").text(app.session.getItem('gender'));
+			
 		},
 		setContentView : ()=>{
 			console.log('step 4'+app.j());
@@ -37,19 +69,31 @@ app.session = {
 			sessionStorage.setItem('css', x+'/resources/css');
 			sessionStorage.setItem('img', x+'/resources/img');
 		},
-		path : x=>{
+		getItem : x=>{
 			return sessionStorage.getItem(x);
 		}
 }
 app.x = ()=>{
-	return app.session.path('context');
+	return app.session.getItem('context');
 }
 app.j = ()=>{
-	return app.session.path('js');
+	return app.session.getItem('js');
 }
 app.c = ()=>{
-	return app.session.path('css');
+	return app.session.getItem('css');
 }
 app.i = ()=>{
-	return app.session.path('img');
+	return app.session.getItem('img');
+}
+
+var user = user || {};
+user = {
+	init : x =>{
+		sessionStorage.setItem('memberId', x.memberId);
+		sessionStorage.setItem('name', x.name);
+		sessionStorage.setItem('age', x.age);
+		sessionStorage.setItem('gender', x.gender);
+		sessionStorage.setItem('teamId', x.teamId);
+		sessionStorage.setItem('roll', x.roll);
+	}
 }

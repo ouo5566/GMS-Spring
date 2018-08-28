@@ -8,7 +8,7 @@
 					<img src="${img}${profile}" alt="" />
 				</td>
 				<td>ID</td>
-				<td>${user.memberId}</td>
+				<td id="memberId"></td>
 			</tr>
 			<tr>
 				<td>이름 </td>
@@ -32,13 +32,6 @@
 						<option class="team-opt" value="TURTLE_KING">TURTLE-KING</option>
 						<option class="team-opt" value="CODDING_ZZANG">CODDING-ZZANG</option>
 					</select>
-					<!-- <br>
-					<input id="teamid_0" type="radio" name="teamid" value=""/>NONE
-					<input id="teamid_1" type="radio" name="teamid" value="AT"/>NOLJA
-					<input id="teamid_2" type="radio" name="teamid" value="HT"/>JIEUN-HOUSE
-					<input id="teamid_3" type="radio" name="teamid" value="ST"/>TURTLE-KING
-					<input id="teamid_4" type="radio" name="teamid" value="CT"/>CODDING-ZZANG
-					<br> -->
 				</td>
 			</tr>
 			<tr>
@@ -56,7 +49,7 @@
 				</td>
 			</tr>
 		</table>
-		<input type="button" class="form-butt" id="update-btn" value="UPDATE" />
+		<input type="button" id="update_btn" value="UPDATE" />
 		</form>
 </div>
 <form id="file-upload-form" >

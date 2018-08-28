@@ -17,50 +17,43 @@ public class MemberMapper implements MemberDAO{
 	private static final String ns = "com.gms.web.mapper.MemberMapper";
 	@Override
 	public void insert(MemberDTO p) {
-		// TODO Auto-generated method stub
-		
+		SqlSession sqlSession = factory.openSession();
+		sqlSession.insert(ns+".insertMember", p);
 	}
 
 	@Override
-	public List<?> selectList(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<?> selectList(Map<?, ?> p) {return null;}
 
 	@Override
-	public List<?> selectSome(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<?> selectSome(Map<?, ?> p) {return null;}
 
 	@Override
-	public MemberDTO selectOne(Map<?, ?> p) {
+	public MemberDTO selectOne(MemberDTO p) {
 		SqlSession sqlSession = factory.openSession();
 		return sqlSession.selectOne(ns+".selectOne", p);
 	}
 
 	@Override
 	public int count(Map<?, ?> p) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void update(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		
+	public void update(MemberDTO p) {
+		SqlSession sqlSession = factory.openSession();
+		sqlSession.update(ns+".updateMember", p);
 	}
 
 	@Override
-	public void delete(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		
+	public void delete(MemberDTO p) {
+		SqlSession sqlSession = factory.openSession();
+		sqlSession.delete(ns+".deleteMember", p);
 	}
 
 	@Override
-	public boolean login(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean login(MemberDTO p) {
+		SqlSession sqlSession = factory.openSession();
+		return (sqlSession.selectOne(ns+".selectOne", p) != null);
 	}
 
 }

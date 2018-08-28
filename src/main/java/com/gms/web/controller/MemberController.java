@@ -6,7 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gms.web.domain.MemberDTO;
 import com.gms.web.service.MemberService;
@@ -16,10 +19,13 @@ import com.gms.web.service.MemberService;
 public class MemberController {
 	static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired MemberService memberService;
-	@RequestMapping("/add")
-	public void add() {
-		
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public String add(@ModelAttribute("member") MemberDTO member) {
+		logger.info("Member Controller :: add()");
+		memberService.add(member);
+		return "auth:member/login.tiles";
 	}
+/*	
 	@RequestMapping("/list")
 	public void list() {
 		
@@ -28,39 +34,47 @@ public class MemberController {
 	public void search() {
 		
 	}
-	@RequestMapping("/retrieve")
-	public void retrieve() {
-		
-	}
 	@RequestMapping("/count")
 	public void count() {
 		
 	}
-	@RequestMapping("/modify")
-	public void modify() {
+	@RequestMapping("/fileupload")
+	public void fileupload() {
 		
+	}
+*/
+	@RequestMapping("/retrieve")
+	public void retrieve() {
+		
+	}
+	@RequestMapping("/modify")
+	public String modify(Model model, @ModelAttribute("member") MemberDTO member) {
+		logger.info("Member Controller :: modify()");
+		memberService.modify(member);
+		model.addAttribute("user", memberService.retrieve(member));
+		return "login:member/retrieve.tiles";
 	}
 	@RequestMapping("/remove")
-	public void remove() {
-		
+	public String remove(@ModelAttribute MemberDTO member) {
+		logger.info("Member Controller :: remove()");
+		memberService.remove(member);
+		return "redirect:/";
 	}
 	@RequestMapping("/login")
-	public String login() {
+	public String login(Model model, @ModelAttribute("member") MemberDTO member) {
 		logger.info("Member Controller :: login()");
-		Map<String, String> p = new HashMap<>();
-		p.put("memberId", "HJ34");
-		MemberDTO m = memberService.retrieve(p);
-		logger.info("Member Controller :: login() :: getName() :: "+ m.getName());
-		return "login_success";
+		if(memberService.login(member)) {
+			model.addAttribute("user", memberService.retrieve(member));
+			logger.info("Member Controller :: login() :: model(\"user\") memberId :: "
+					+ ((MemberDTO)model.asMap().get("user")).getMemberId());
+		}else {
+			return "auth:member/login.tiles" ;
+		}
+		return "login:member/retrieve.tiles";
 	}
 	@RequestMapping("/logout")
 	public String logout() {
 		logger.info("Member Controller :: logout()");
 		return "redirect:/";
 	}
-	@RequestMapping("/fileupload")
-	public void fileupload() {
-		
-	}
-	
 }

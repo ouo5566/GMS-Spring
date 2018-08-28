@@ -2,23 +2,22 @@
 <div id="content-box">
 	<form id="join-form">
 		<h3>JOIN PAGE</h3>
-		ID : <input type="text" name="userid" /><br>
-		PW : <input type="text" name="password" /><br>
-		NAME : <input type="text" name="username" /><br>
-		SSN : <input type="text" name="userssn" /><br>	
+		ID : <input type="text" name="memberId" required/><br>
+		PW : <input type="text" name="pw" required/><br>
+		NAME : <input type="text" name="name" required/><br>
+		SSN : <input type="text" name="ssn" required/><br>	
 		소속팀
-		<input type="radio" name="teamid" value="" checked="checked"/>NONE
-		<input type="radio" name="teamid" value="NOLJA"/>NOLJA
-		<input type="radio" name="teamid" value="JIEUN_HOUSE"/>JIEUN-HOUSE
-		<input type="radio" name="teamid" value="TURTLE_KING"/>TURTLE-KING
-		<input type="radio" name="teamid" value="CODDING_ZZANG"/>CODDING-ZZANG<br>
+		<input type="radio" name="teamId" value="" checked="checked"/>NONE
+		<input type="radio" name="teamId" value="NOLJA"/>NOLJA
+		<input type="radio" name="teamId" value="JIEUN_HOUSE"/>JIEUN-HOUSE
+		<input type="radio" name="teamId" value="TURTLE_KING"/>TURTLE-KING
+		<input type="radio" name="teamId" value="CODDING_ZZANG"/>CODDING-ZZANG<br>
 		프로젝트역할
 		<select name="roll" id="roll">
 			<option value="leader">팀장</option>
 			<option value="front">프론트개발</option>
 			<option value="back">백단개발</option>
 			<option value="android">안드로이드개발</option>
-			<option value="minfe">민폐</option>
 		</select><br>
 		수강과목
 		<input type="checkbox" name="subject" value="java" checked="checked"/>Java

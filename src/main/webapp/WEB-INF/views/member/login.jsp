@@ -2,9 +2,8 @@
 <div id="content-box">
 	<h3>LOGIN PAGE</h3>
 	<form id="login-form">
-		<input type="hidden" name="action" value="login"/>
-		ID &nbsp;<input type="text" name="userid"/> <br>
-		PW <input type="text" name="password"/>
+		ID &nbsp;<input type="text" name="memberId"/> <br>
+		PW <input type="text" name="pw"/>
 		<input id="login_form_btn" type="button" value="LOGIN"/>
 	</form>
 </div>

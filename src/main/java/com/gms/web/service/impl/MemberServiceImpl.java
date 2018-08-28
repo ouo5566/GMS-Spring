@@ -1,5 +1,7 @@
 package com.gms.web.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -15,47 +17,43 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired MemberDAO memberDAO;
 	@Override
 	public void add(MemberDTO p) {
-		
+		String ssn = p.getSsn();
+		p.setAge(String.valueOf( 2019 - Integer.parseInt(
+												((Integer.parseInt(ssn.substring(0, 2)) 
+														> Integer.parseInt(new SimpleDateFormat("yyyy")
+																				.format(new Date())
+																				.substring(2)))
+													? "19" : "20")
+												+ssn.substring(0, 2))));
+		p.setGender((ssn.split("-")[1].equals("1"))?"MEN":"WOMEN");
+		memberDAO.insert(p);
 	}
-
+	
 	@Override
-	public List<?> list(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	public List<?> list(Map<?, ?> p) {return null;}
 	@Override
-	public List<?> search(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	public List<?> search(Map<?, ?> p) {return null;}
 	@Override
-	public MemberDTO retrieve(Map<?, ?> p) {
+	public int count(Map<?, ?> p) {return 0;}
+	
+	@Override
+	public MemberDTO retrieve(MemberDTO p) {
 		return memberDAO.selectOne(p);
 	}
 
 	@Override
-	public int count(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void modify(MemberDTO p) {
+		memberDAO.update(p);
 	}
 
 	@Override
-	public void modify(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		
+	public void remove(MemberDTO p) {
+		memberDAO.delete(p);
 	}
 
 	@Override
-	public void remove(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean login(Map<?, ?> p) {
-		return false;
+	public boolean login(MemberDTO p) {
+		return (memberDAO.login(p));
 	}
 
 }

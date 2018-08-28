@@ -35,8 +35,16 @@
 		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>
-<script>
+<script>	
 app.init('${context}');
+user.init({
+	memberId : '${user.memberId}',
+	name : '${user.name}',
+	age : '${user.age}',
+	gender : '${user.gender}',
+	teamId : '${user.teamId}',
+	roll : '${user.roll}'
+});
 </script>
 </body>
 </html>
