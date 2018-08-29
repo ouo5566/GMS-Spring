@@ -55,5 +55,4 @@ public class MemberMapper implements MemberDAO{
 		SqlSession sqlSession = factory.openSession();
 		return (sqlSession.selectOne(ns+".selectOne", p) != null);
 	}
-
 }
