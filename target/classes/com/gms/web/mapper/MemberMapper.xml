@@ -15,7 +15,7 @@
 	    GENDER
 	    FROM MEMBER
 	    WHERE MEMBER_ID LIKE #{memberId}
-	    <if test="#{pw} != null">
+	    <if test="pw != null and pw != ''">
 	    	AND PW LIKE #{pw}
 	    </if>
 	</select>
@@ -27,7 +27,7 @@
   	</insert>
 	<update id="updateMember">
 		UPDATE MEMBER SET TEAM_ID = #{teamId}, ROLL = #{roll} 
-		<if test="#{pw} != null">
+		<if test="pw != ''">
 		, PW = #{pw}
 		</if>
 		WHERE MEMBER_ID LIKE #{memberId} 

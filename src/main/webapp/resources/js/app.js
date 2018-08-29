@@ -40,13 +40,23 @@ app = {
 			$('#update_move').click(()=>{
 				location.href = app.x()+"/move/login/member/modify";
 			});
+			$('#delete_move').click(()=>{
+				location.href = app.x()+"/move/login/member/remove";
+			});
 			$('#update_btn').click(()=>{
-				let id = $('<input type="hidden" name="memberId" value="'+app.session.getItem('memberId')+'"/>');
-				alert(id);
+				let id = $('<input type="hidden" name="memberId" value="'+$('#memberId').text()+'"/>');
 				$('#update-form')
 					.append(id)
 					.attr({ action : app.x() + "/member/modify",
 							method : "POST"})
+					.submit();
+			});
+			$('#delete_btn').click(()=>{
+				let id = $('<input type="hidden" name="memberId" value="'+$('#memberId').text()+'"/>');
+				$('#update-form')
+				.append(id)
+				.attr({ action : app.x() + "/member/remove",
+						method : "POST"})
 					.submit();
 			});
 			

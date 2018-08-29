@@ -8,6 +8,7 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times; </a>
             <a id="logout_btn">Logout</a>
             <a id="update_move">Update</a>
+            <a id="delete_move">Delete</a>
           </div>
           <!-- Use any element to open the sidenav -->
           <span onclick="openNav()" class="pull-right menu-icon">☰</span>

@@ -52,9 +52,8 @@ public class MemberController {
 		logger.info("Member Controller :: modify()");
 		System.out.println(member);
 		memberService.modify(member);
-		/*
+		System.out.println(memberService.retrieve(member));
 		model.addAttribute("user", memberService.retrieve(member));
-		*/
 		return "login:member/retrieve.tiles";
 	}
 	@RequestMapping("/remove")
@@ -68,8 +67,6 @@ public class MemberController {
 		logger.info("Member Controller :: login()");
 		if(memberService.login(member)) {
 			model.addAttribute("user", memberService.retrieve(member));
-			logger.info("Member Controller :: login() :: model(\"user\") memberId :: "
-					+ ((MemberDTO)model.asMap().get("user")).getMemberId());
 		}else {
 			return "auth:member/login.tiles" ;
 		}
