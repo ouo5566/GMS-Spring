@@ -9,6 +9,7 @@ app = {
 		onCreate : ()=>{
 			console.log('step 3');
 			app.setContentView();
+			
 			$('#login_btn').click(()=>{
 				location.href = app.x()+"/move/auth/member/login";
 			});
@@ -40,21 +41,21 @@ app = {
 				location.href = app.x()+"/move/login/member/modify";
 			});
 			$('#update_btn').click(()=>{
-				let form = document.getElementById('update-form');
-				alert(form.password.value);
-				if(form.password.value === ""){
-					form.password.value = form.password.placeholder;
-				}
+				let id = $('<input type="text" name="memberId" value="'+app.session.getItem('memberId')+'"/>');
+				alert(id);
 				$('#update-form')
+					.append(id)
 					.attr({ action : app.x() + "/member/modify",
 							method : "POST"})
 					.submit();
 			});
 			
-			$("#update-form table tr:eq(0) td:eq(2)").text(app.session.getItem('memberId'));
-			$("#update-form table tr:eq(1) td:eq(1)").text(app.session.getItem('name'));
-			$("#update-form table tr:eq(4) td:eq(1)").text(app.session.getItem('age'));
-			$("#update-form table tr:eq(3) td:eq(1)").text(app.session.getItem('gender'));
+			$('#memberId').text(app.session.getItem('memberId'));
+			$('#name').text(app.session.getItem('name'));
+			$('#age').text(app.session.getItem('age'));
+			$('#gender').text(app.session.getItem('gender'));
+			$('#teamId').val(app.session.getItem('teamId')).prop('selected',true);
+			$('#roll').val(app.session.getItem('roll')).prop('selected',true);
 			
 		},
 		setContentView : ()=>{

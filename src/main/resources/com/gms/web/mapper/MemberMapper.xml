@@ -26,7 +26,10 @@
 	  	VALUES (#{memberId}, #{teamId}, #{name}, #{ssn}, #{roll}, #{pw}, #{age}, #{gender}, '')
   	</insert>
 	<update id="updateMember">
-		UPDATE MEMBER SET TEAM_ID = #{teamId}, PW = #{pw}, ROLL = #{roll}
+		UPDATE MEMBER SET TEAM_ID = #{teamId}, ROLL = #{roll} 
+		<if test="#{pw} != null">
+		, PW = #{pw}
+		</if>
 		WHERE MEMBER_ID LIKE #{memberId} 
 	</update>
 	<delete id="deleteMember">

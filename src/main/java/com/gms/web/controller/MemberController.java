@@ -50,8 +50,11 @@ public class MemberController {
 	@RequestMapping("/modify")
 	public String modify(Model model, @ModelAttribute("member") MemberDTO member) {
 		logger.info("Member Controller :: modify()");
+		System.out.println(member);
 		memberService.modify(member);
+		/*
 		model.addAttribute("user", memberService.retrieve(member));
+		*/
 		return "login:member/retrieve.tiles";
 	}
 	@RequestMapping("/remove")
