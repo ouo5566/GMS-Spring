@@ -41,7 +41,7 @@ app = {
 				location.href = app.x()+"/move/login/member/modify";
 			});
 			$('#update_btn').click(()=>{
-				let id = $('<input type="text" name="memberId" value="'+app.session.getItem('memberId')+'"/>');
+				let id = $('<input type="hidden" name="memberId" value="'+app.session.getItem('memberId')+'"/>');
 				alert(id);
 				$('#update-form')
 					.append(id)
