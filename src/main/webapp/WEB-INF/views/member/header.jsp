@@ -7,6 +7,7 @@
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times; </a>
             <a id="logout_btn">Logout</a>
+            <a id="retrieve_move">Retrieve</a>
             <a id="update_move">Update</a>
             <a id="delete_move">Delete</a>
           </div>
@@ -18,7 +19,7 @@
         <div class="row">
           <div class="inner text-center">
             <h1 class="logo-name"> WELCOME </h1>
-            <h2>${user.name}'s page</h2>
+            <input type="hidden" id="session_id" value="${user.memberId}" />
           </div>
         </div>
       </div>

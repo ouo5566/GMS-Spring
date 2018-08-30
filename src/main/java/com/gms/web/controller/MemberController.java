@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,16 +42,17 @@ public class MemberController {
 		
 	}
 */
-	@RequestMapping("/retrieve")
-	public void retrieve() {
-		
+	@RequestMapping("/retrieve/{id}")
+	public String retrieve(Model model, @PathVariable String id) {
+		MemberDTO p = new MemberDTO();
+		p.setMemberId(id);
+		model.addAttribute("user", memberService.retrieve(p));
+		return "login:member/retrieve.tiles";
 	}
-	@RequestMapping("/modify")
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String modify(Model model, @ModelAttribute("member") MemberDTO member) {
 		logger.info("Member Controller :: modify()");
-		System.out.println(member);
 		memberService.modify(member);
-		System.out.println(memberService.retrieve(member));
 		model.addAttribute("user", memberService.retrieve(member));
 		return "login:member/retrieve.tiles";
 	}
@@ -60,7 +62,7 @@ public class MemberController {
 		memberService.remove(member);
 		return "redirect:/";
 	}
-	@RequestMapping("/login")
+	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(Model model, @ModelAttribute("member") MemberDTO member) {
 		logger.info("Member Controller :: login()");
 		if(memberService.login(member)) {
@@ -68,7 +70,7 @@ public class MemberController {
 		}else {
 			return "auth:member/login.tiles" ;
 		}
-		return "login:member/retrieve.tiles";
+		return "login_success";
 	}
 	@RequestMapping("/logout")
 	public String logout() {

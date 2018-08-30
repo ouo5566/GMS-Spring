@@ -1,5 +1,6 @@
 "use strict" //에러가 나면 보여주겠다.
 var app = app || {};
+var user = user || {};
 app = {
 		init : x=>{
 			console.log('step 1');
@@ -37,6 +38,9 @@ app = {
 			$('#logout_btn').click(()=>{
 				location.href = app.x()+"/member/logout";
 			});
+			$('#retrieve_move').click(()=>{
+				location.href = app.x()+"/member/retrieve/"+app.session.getItem('memberId');
+			});
 			$('#update_move').click(()=>{
 				location.href = app.x()+"/move/login/member/modify";
 			});
@@ -54,15 +58,16 @@ app = {
 			$('#delete_btn').click(()=>{
 				let id = $('<input type="hidden" name="memberId" value="'+$('#memberId').text()+'"/>');
 				$('#update-form')
-				.append(id)
-				.attr({ action : app.x() + "/member/remove",
-						method : "POST"})
+					.append(id)
+					.attr({ action : app.x() + "/member/remove",
+							method : "POST"})
 					.submit();
 			});
 			
 			$('#memberId').text(app.session.getItem('memberId'));
 			$('#name').text(app.session.getItem('name'));
 			$('#age').text(app.session.getItem('age'));
+			$('#ssn').text(app.session.getItem('ssn'));
 			$('#gender').text(app.session.getItem('gender'));
 			$('#teamId').val(app.session.getItem('teamId')).prop('selected',true);
 			$('#roll').val(app.session.getItem('roll')).prop('selected',true);
@@ -97,14 +102,11 @@ app.i = ()=>{
 	return app.session.getItem('img');
 }
 
-var user = user || {};
-user = {
-	init : x =>{
-		sessionStorage.setItem('memberId', x.memberId);
-		sessionStorage.setItem('name', x.name);
-		sessionStorage.setItem('age', x.age);
-		sessionStorage.setItem('gender', x.gender);
-		sessionStorage.setItem('teamId', x.teamId);
-		sessionStorage.setItem('roll', x.roll);
-	}
+user.session = x =>{
+	var s = '';
+	$.each(x, function(k, v){
+		s += 'key : '+k+' / value : '+v+'\n';
+		sessionStorage.setItem(k, v);
+	});
+	alert(s);
 }

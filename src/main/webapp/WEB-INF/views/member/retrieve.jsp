@@ -30,6 +30,5 @@
 			</tr>
 		</table>
 		<br>
-		<a class="retrieve-butt" id="delete"><button>DELETE</button></a>
 </div>
 

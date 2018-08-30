@@ -37,9 +37,10 @@
 </div>
 <script>	
 app.init('${context}');
-user.init({
+user.session({
 	memberId : '${user.memberId}',
 	name : '${user.name}',
+	ssn : '${user.ssn}',
 	age : '${user.age}',
 	gender : '${user.gender}',
 	teamId : '${user.teamId}',
